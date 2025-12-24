@@ -39,6 +39,9 @@ Node* append_Node(Node* head, int num)
 
 }
 
+
+
+
 Node* insert_at(Node* head, int index, int num)
 {
     Node* new_node = create_Node(num);
@@ -72,7 +75,7 @@ void free_all(Node* head)
     Node* curr = head;
     Node* next_node = NULL;
 
-    while(curr-> != NULL)
+    while(curr->next != NULL)
     {
         next_node = curr->next;
         
