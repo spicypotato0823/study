@@ -6,5 +6,5 @@
 *.exe
 *.out
 
-first
-
+#Java class files
+*.class
