@@ -15,7 +15,8 @@ int main()
         printf("\n=== Voca Master ===\n");
         printf("1. 단어 추가\n");
         printf("2. 단어장 보기\n");
-        printf("3. 종료\n");
+        printf("3. 단어 테스트\n");
+        printf("4. 종료\n");
         printf("선택: ");
 
         scanf("%d", &choice);
@@ -40,6 +41,12 @@ int main()
         }
 
         if(choice == 3)
+        {
+            printf("단어 테스트를 시작합니다. \n");
+            test_meaning(my_voca);
+        }
+
+        if(choice == 4)
         {
             printf("프로그램 종료.\n");
             save_to_file(my_voca);

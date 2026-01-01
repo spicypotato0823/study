@@ -2,3 +2,4 @@ apple 사과
 banana 바나나
 cat 고양이
 terminal 터미널
+monkey 원숭이

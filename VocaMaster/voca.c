@@ -122,6 +122,42 @@ void load_from_file(WordNode** head)
 
     printf("불러오기 완료\n");
     fclose(fp);
+}
 
 
+
+void test_meaning(WordNode* head)
+{
+    WordNode* curr = head;
+    char temp_meaning[100];
+    
+
+    int wrong = 0;
+    int right = 0;
+
+    while(curr != NULL)
+    {
+
+        printf("%s : ", curr->word);
+
+        scanf("%s", temp_meaning);
+        while (getchar() != '\n');
+
+        if (strcmp(temp_meaning, curr->meaning) == 0)
+        {
+            printf("\n정답입니다!\n");
+            right++;
+        }
+        else
+        {
+            printf("\n땡! 정답은 : %s입니다!\n", curr->meaning);
+            wrong++;
+        }
+        
+        curr = curr->next;
+        
+        
+    }
+
+    printf("\n총 문제 개수 : %d\n맞은 개수 : %d\n틀린 개수 : %d", wrong+right, right, wrong);
 }

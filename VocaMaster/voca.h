@@ -21,4 +21,5 @@ void print_words(WordNode* head);
 void free_all(WordNode* head);
 void save_to_file(WordNode* head);
 void load_from_file(WordNode** head);
+void test_meaning(WordNode* head);
 #endif
