@@ -27,6 +27,8 @@ int is_empty(QueueType * Q)
     {
         return 0;
     }
+
+// rear과 front가 같을 경우 공백상태
 }
 
 int is_full(QueueType * Q)
@@ -39,7 +41,8 @@ int is_full(QueueType * Q)
     {
         return 0;
     }
-    // 원형 큐에서 배열 한 칸을 비워두는 이유는 공백 상태와 포화 상태를 구별하기 위함. 
+// rear가 front보다 한 칸 앞에 있을 경우 포화상태
+// 원형 큐에서 배열 한 칸을 비워두는 이유는 공백 상태와 포화 상태를 구별하기 위함. 
 }
 
 void enqueue(int data, QueueType * Q)
@@ -68,14 +71,37 @@ int dequeue(QueueType * Q)
     return Q->data[Q->front];
 }
 
-void print_queue(QueueType * Q)
+void print_data(QueueType * Q)
 {
-    printf("Q->front : %d , Q->rear : %d\n", Q->front, Q->rear);
-
     for(int i = 0; i < MAX_QUEUE_SIZE; i++)
     {
         printf("[data %d] : %d\n", i, Q->data[i]);
     }
+
+    return;
+}
+
+void print_queue(QueueType * Q) 
+{
+    printf("Q->front : %d , Q->rear : %d", Q->front, Q->rear);
+    //front + 1 부터    rear 까지 
+    if(is_empty(Q))
+    {
+        printf("queue is empty!\n");
+        return;
+    }
+
+    int i = Q->front;
+
+    do {
+        i = (i + 1) % MAX_QUEUE_SIZE;
+        printf("data : %d | ", Q->data[i]);
+
+        if(i == Q->rear) break;
+    } while (i != Q->rear);
+    
+    printf("\n");
+
 
     return;
 }
@@ -86,32 +112,6 @@ int main(void)
 
     init_queue(&queue1);
 
-    enqueue(10, &queue1);
-    
     print_queue(&queue1);
-
-    enqueue(20, &queue1);
-    
-    print_queue(&queue1);
-    
-    enqueue(30, &queue1);
-    
-    print_queue(&queue1);
-
-    enqueue(40, &queue1);
-
-    print_queue(&queue1);
-
-    dequeue(&queue1);
-    
-    print_queue(&queue1);
-
-    dequeue(&queue1);
-    
-    print_queue(&queue1);
-
-    enqueue(60, &queue1);
-
-    print_queue(&queue1);
-
+    print_data(&queue1);
 }
