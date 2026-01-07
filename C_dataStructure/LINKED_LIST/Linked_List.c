@@ -2,42 +2,92 @@
 #include <stdlib.h>
 
 
-typedef struct Node 
+typedef struct ListNode
 {
     int data;
-    struct Node* next;
-} Node;
+    struct ListNode* next;
+} ListNode;
 
-// typedef를 통해 struct Node를 Node로 바꿈
-// 구조체 사용시, 일반 변수는 Node.data로 표현, 포인터는 Node->next로 표현
+
+ListNode* insert_first(int data, ListNode* head)
+{
+    ListNode* p = (ListNode*)malloc(sizeof(ListNode));
+    p->data = data;
+    p->next = head;
+
+    return p;
+}
+
+//p->next = pre->next, pre->next = p;
+void insert(ListNode* pre, int data)
+{
+    if(pre == NULL) return;
+
+    ListNode * p = (ListNode*)malloc(sizeof(ListNode));
+    p->data = data;
+    p->next = pre->next;
+    pre->next = p;
+
+    return;
+}
+
+ListNode* delete_first(ListNode* head)
+{
+    if(head == NULL) exit(1);
+
+    ListNode * removed = head;
+    head = head->next;
+
+    free(removed);
+    
+    return head;
+}
+
+void delete(ListNode* pre)
+{
+    if(pre->next == NULL) return;
+    ListNode * removed = pre->next;
+    pre->next = removed->next;
+    free(removed);
+
+}
+
+    
+
+void print_node(ListNode* head)
+{
+    ListNode* cur = head;
+    printf("[head] -> ");
+    while (cur != NULL)
+    {
+        printf("%d -> ", cur->data);
+        cur = cur->next;
+    }
+    printf("NULL\n");
+    return;
+}
 
 int main(void)
 {
-    Node* head = (Node*)malloc(sizeof(Node));
-    head->data = 10;
-    head->next = NULL;
-
-    Node* node2 = (Node*)malloc(sizeof(Node));
-    node2->data = 20;
-    node2->next = NULL;
-
-    head->next = node2;
-
-    printf("첫번째 노드 값 : %d\n", head->data);
-    printf("두번째 노드 값 : %d\n", (head->next)->data);
+    ListNode * head = NULL;
     
-    free(head);
-    free(node2);
+    head = insert_first(10, head);
+    print_node(head);
     
+    head = insert_first(20, head);
+    print_node(head);
 
+    head = insert_first(30, head);
+    print_node(head);
 
+    insert(head, 25);
+    print_node(head);
 
+    head = delete_first(head);
+    print_node(head);
 
-
-
-
-
-
-
+    delete(head->next);
+    print_node(head);
+    
     return 0;
 }

@@ -40,8 +40,6 @@ Node* append_Node(Node* head, int num)
 }
 
 
-
-
 Node* insert_at(Node* head, int index, int num)
 {
     Node* new_node = create_Node(num);
