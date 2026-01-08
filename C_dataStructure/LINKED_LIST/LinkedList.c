@@ -50,7 +50,7 @@ Node* insert_at(Node* head, int index, int num)
         new_node->next = head;
         return new_node;
     }
-    
+    //head가 바뀔 수 있기때문에 Node*를 리턴함.
     for(int i = 0; i < index - 1; i++)
     {        
         if(prev_node->next == NULL)
