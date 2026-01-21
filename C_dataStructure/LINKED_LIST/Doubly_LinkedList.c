@@ -22,6 +22,7 @@ NodeType* CreateNode(int data)
 NodeType* InsertHead(NodeType* head, int data)
 {
     NodeType* new_node = CreateNode(data);
+
     if(head == NULL)
     {
         return new_node;
@@ -31,7 +32,22 @@ NodeType* InsertHead(NodeType* head, int data)
     head->prev = new_node;
     return new_node;   
 }
+/*
+void Push(NodeType** head, int data)
+{
+    NodeType* new_node = CreateNode(data);
+    if(*head == NULL)
+    {
+        *head = new_node;
+        return;
+    }
 
+    new_node->next = *head;
+    (*head)->prev = new_node;
+    *head = new_node;
+    return;
+}
+*/
 NodeType* InsertTail(NodeType* head, int data)
 {
     NodeType* new_node = CreateNode(data);
