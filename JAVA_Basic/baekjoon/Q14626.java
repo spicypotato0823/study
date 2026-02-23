@@ -1,37 +1,46 @@
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
-public class Q14626{
+public class Q14626
+{
     public static void main(String[] args) throws IOException 
     {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String st = bf.readLine();
-        
         int sum = 0;
-        int starWeight = 0; 
+        int p = 0;
 
+        for(int i = 1; i <= 12; i++)
+        {
+            int G;
 
-        for (int i = 0; i < 13; i++) 
+            if(i % 2 == 0)
             {
-            
-            int weight = (i % 2 == 0) ? 1 : 3; 
+                G = 3;
+            }
+            else
+            {
+                G = 1;
+            }
 
-            if (st.charAt(i) == '*') {
-                starWeight = weight;
-            } else {
-                sum += (st.charAt(i) - '0') * weight;
+            if(Character.isDigit(st.charAt(i - 1)))
+            {
+                sum += G * (st.charAt(i - 1) - '0');  
+            }
+            else
+            {
+                p = G;
             }
         }
 
-        for (int i = 0; i <= 9; i++) 
+        for(int i = 0; i < 10; i++)
+        {
+            if(((st.charAt(12) - '0') + (sum + p * i)) % 10 == 0)
             {
-            
-            if ((sum + i * starWeight) % 10 == 0) 
-                {
                 System.out.println(i);
                 break;
-                }
+            }
         }
     }
 }

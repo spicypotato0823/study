@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 public class Q2576 
@@ -9,7 +9,7 @@ public class Q2576
     {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         int j = 0;
-        int enter = 0;
+        int enter;
         int sum = 0;
         int min = 100;
 
