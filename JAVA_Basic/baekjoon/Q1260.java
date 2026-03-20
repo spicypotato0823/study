@@ -7,6 +7,7 @@ public class Q1260
 {
     public static void main(String[] args) throws IOException
     {
+        /*
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(bf.readLine());
         int N = Integer.parseInt(st.nextToken());
@@ -30,6 +31,6 @@ public class Q1260
 
         }
 
-
+    */
     }
 }
