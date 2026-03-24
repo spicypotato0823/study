@@ -5,6 +5,19 @@ import java.util.*;
 
 public class Q1260
 {
+
+    public static void dfs (ArrayList<ArrayList<Integer>> array, int node, int[] visited) {
+        if (visited[node] == 1) return;
+        visited[node] = 1;
+
+        System.out.printf("%d \n", node);
+
+        for (int next : array.get(node))
+        {
+            dfs(array, next, visited);
+        }
+    }
+
     public static void DFS(ArrayList<ArrayList<Integer>> array, int V, int [] visited, Stack<Integer> st)
     {
         visited[V]++;
